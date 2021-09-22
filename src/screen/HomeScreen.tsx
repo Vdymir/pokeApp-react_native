@@ -1,8 +1,9 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import PokemonCard from '../components/PokemonCard'
-import { usePokemonPagination } from '../hooks/usePokemonPagination'
+
+import { PokemonCard } from '../components'
+import { usePokemonPagination } from '../hooks'
 import appTheme from '../theme/appTheme'
 
 const HomeScreen = () => {

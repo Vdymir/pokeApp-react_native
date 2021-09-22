@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ActivityIndicator, Animated, ImageErrorEventData, ImageStyle, NativeSyntheticEvent, StyleProp, View } from 'react-native'
-import { useAnimation } from '../hooks/useAnimation';
+import { useAnimation } from '../hooks';
 
 
 interface Props {

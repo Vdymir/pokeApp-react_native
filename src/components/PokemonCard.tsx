@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import { View, TouchableOpacity, StyleSheet, useWindowDimensions, Text, Image } from 'react-native'
 import ImageColors from 'react-native-image-colors'
+import { useNavigation } from '@react-navigation/native';
 
 import { OnePokemon } from '../interface/interfacePokemon'
 import { FadeInImage } from './FadeInImage'
@@ -12,24 +13,30 @@ interface Props {
 const PokemonCard = ({ pokemon } :Props) => {
 
     const windowWidth = useWindowDimensions().width
-    const [bgColor, setBgColor] = useState("gray")
+    const [bgColor, setBgColor] = useState("gray");
+    const isMounted = useRef(true);
+    const { navigate } = useNavigation<any>();
+    
     
     useEffect(() => {
        
         ImageColors.getColors(pokemon.imgUrl, {fallback: 'gray'})
             .then( result => {
-             if(result.platform === 'android') {
-                setBgColor(result.dominant || 'gray')
-            } else if (result.platform === 'ios'){
-                setBgColor(result.background || 'gray')
-            }
+                
+                if(isMounted.current === false) return;
+                if(result.platform === 'android') {
+                    setBgColor(result.dominant || 'gray')
+                } else if (result.platform === 'ios'){
+                    setBgColor(result.background || 'gray')
+                }
         })
+        return () => {isMounted.current = false}
     }, [])
     
     return (
         <TouchableOpacity 
             activeOpacity={0.8}
-            
+            onPress={ () => navigate('PokemonScreen', {OnePokemon: pokemon, color:bgColor} )}
         >
             {/* Card */}
             <View
@@ -54,7 +61,7 @@ const PokemonCard = ({ pokemon } :Props) => {
                 
                 {/* namePokemon */}
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
-                    <View style={{backgroundColor: '#252525ce', padding: 4, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 10}}>
+                    <View style={{backgroundColor: '#25252540', padding: 4, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 10}}>
                         <Text style={styles.name}>
                             {pokemon.name}
                         </Text> 

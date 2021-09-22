@@ -4,8 +4,14 @@ import {
     HomeScreen,
     PokemonScreen
 } from "../screen";
+import { OnePokemon } from "../interface/interfacePokemon";
 
-const Stack = createStackNavigator();
+export type RootStackParams = {
+    HomeScreen: undefined,
+    PokemonScreen: {OnePokemon: OnePokemon, color: string}
+}
+
+const Stack = createStackNavigator<RootStackParams>();
 
 const screenOptions = {
     headerShown: false,
