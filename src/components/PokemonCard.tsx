@@ -53,6 +53,7 @@ const PokemonCard = ({ pokemon } :Props) => {
                         style={styles.pokebola}
                     />
                 </View>
+
                 {/* imgPokemon */}
                 <FadeInImage 
                     uri={pokemon.imgUrl}
@@ -60,13 +61,14 @@ const PokemonCard = ({ pokemon } :Props) => {
                 />
                 
                 {/* namePokemon */}
-                <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-end', zIndex: 2}}>
                     <View style={{backgroundColor: '#25252540', padding: 4, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 10}}>
                         <Text style={styles.name}>
                             {pokemon.name}
                         </Text> 
                     </View> 
                 </View>
+                
 
             </View>
         </TouchableOpacity>
@@ -100,11 +102,12 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     pokebolaContainer:{
+        width: 100,
+        height: 100,
         position: 'absolute',
         bottom: 0,
-        right: 0,  
-        overflow: 'hidden',
-        zIndex: 2
+        right: 0,
+        overflow: 'hidden'
     },
     pokebola:{
         width: 100,
@@ -113,8 +116,7 @@ const styles = StyleSheet.create({
         bottom: -20,
         right: -20,
         opacity: 0.5,
-        backgroundColor: 'red',
-        
+        overflow: 'hidden'
     },
     pokemonImg:{
         width: 120,
@@ -122,6 +124,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: -20,
         right: 12,
-        
     }
 })

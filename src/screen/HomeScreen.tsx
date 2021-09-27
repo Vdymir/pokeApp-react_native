@@ -1,16 +1,33 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ActivityIndicator, FlatList, Image, View } from 'react-native'
 
 import { PokemonCard } from '../components'
 import { usePokemonPagination } from '../hooks'
 import appTheme from '../theme/appTheme'
 
+
 const HomeScreen = () => {
-    
-    const { top } = useSafeAreaInsets();
 
     const {simplePokemonList, isLoading, loadPokemons} = usePokemonPagination();
+
+    const headerTitle = () => {
+        return(
+            <View style={{
+                height: 150,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 10
+            }}>
+                <Image 
+                    source={ require('../assets/logo.png')}
+                    style={{
+                        width: '100%',
+                        height: 150
+                    }}
+                />
+            </View>
+        )
+    }
     return (
         <>
             <Image 
@@ -23,17 +40,7 @@ const HomeScreen = () => {
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item) => item.id}
                     //Title:
-                    ListHeaderComponent={() => (
-                        <Text style={{
-                            ...appTheme.title,
-                            ...appTheme.globalMargin,
-                            marginTop: top + 25,
-                            paddingBottom: 50,
-                            color:"black"
-                        }}>
-                            PokeApp
-                        </Text>
-                    )}
+                    ListHeaderComponent={ headerTitle }
                     // Componente a mostrar
                     renderItem={ ({item}) => (
                         <PokemonCard pokemon={item}/>
