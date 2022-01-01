@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { View, Platform, FlatList, Text } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Loading, PokemonCard, SearchInput } from '../components';
-import { usePokemonSearch } from '../hooks';
-import { OnePokemon } from '../interface/interfacePokemon';
-import appTheme from '../theme/appTheme';
+import { Loading, PokemonCard, SearchInput } from '../../components';
+import { usePokemonSearch } from '../../hooks';
+import { OnePokemon } from '../../interface/interfacePokemon';
+import appTheme from '../../theme/appTheme';
 
 
 const SearchScreen = () => {

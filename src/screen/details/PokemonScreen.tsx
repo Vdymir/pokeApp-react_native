@@ -2,11 +2,11 @@ import React from 'react'
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParams } from '../navigation/StackNavigaton'
 
-import appTheme from '../theme/appTheme'
-import { FadeInImage, PokemonDetails } from '../components'
-import { usePokemon } from '../hooks'
+import { RootStackParams } from '../../navigation/StackNavigaton'
+import appTheme from '../../theme/appTheme'
+import { FadeInImage, PokemonDetails } from '../../components'
+import { usePokemon } from '../../hooks'
 
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'>{}

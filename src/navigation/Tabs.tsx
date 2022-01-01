@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import StackNavigation from './StackNavigaton';
-import { SearchScreen } from '../screen';
 import  Icon  from 'react-native-vector-icons/Ionicons';
+import StackNavigation from './StackNavigaton';
+import SearchScreen from '../screen/search'
 
 const Tab = createBottomTabNavigator();
 

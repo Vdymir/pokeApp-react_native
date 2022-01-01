@@ -1,10 +1,9 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
-import { 
-    HomeScreen,
-    PokemonScreen
-} from "../screen";
+
 import { OnePokemon } from "../interface/interfacePokemon";
+import HomeScreen from "../screen/home";
+import PokemonScreen from "../screen/search";
 
 export type RootStackParams = {
     HomeScreen: undefined,
