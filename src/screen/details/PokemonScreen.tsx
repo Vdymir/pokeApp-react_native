@@ -50,7 +50,7 @@ const PokemonScreen = ({ route, navigation }: Props) => {
 
                 {/** Pokebola */}
                 <Image 
-                    source={require('../assets/pokebola-blanca.png')}
+                    source={require('../../assets/pokebola-blanca.png')}
                     style={styled.pokebola}
                 />
 
@@ -73,7 +73,7 @@ const PokemonScreen = ({ route, navigation }: Props) => {
                                 />
                             </View>
                         )
-                    :  <PokemonDetails pokemon={pokemon} />
+                    :  <PokemonDetails pokemon={pokemon} color={color} />
                 }
             
         </View>

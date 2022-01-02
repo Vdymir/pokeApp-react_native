@@ -18,7 +18,7 @@ const HomeScreen = () => {
                 marginBottom: 10
             }}>
                 <Image 
-                    source={ require('../assets/logo.png')}
+                    source={ require('../../assets/logo.png')}
                     style={{
                         width: '100%',
                         height: 150
@@ -30,7 +30,7 @@ const HomeScreen = () => {
     return (
         <>
             <Image 
-                source={ require('../assets/pokebola.png')}
+                source={ require('../../assets/pokebola.png')}
                 style={{ ...appTheme.pokebolaBG}}
             />
             <View style={{alignItems: 'center'}}>
