@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { StackScreenProps } from '@react-navigation/stack'
 
@@ -20,9 +20,13 @@ const PokemonScreen = ({ route, navigation }: Props) => {
 
     return (
         <View style={{flex: 1}}>
+            <StatusBar 
+                backgroundColor={color}
+            />
             {/* header Container */}
             <View style={{
                 ...styled.headContainer,
+                ...appTheme.shadow,
                 backgroundColor: color
             }}>
                 {/* Go to back */}
@@ -89,14 +93,6 @@ const styled = StyleSheet.create({
         borderBottomStartRadius: 1000,
         borderBottomEndRadius: 1000,
         alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 4,
     },
     gotoBack:{
         position: 'absolute',

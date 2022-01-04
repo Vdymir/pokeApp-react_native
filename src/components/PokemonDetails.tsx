@@ -1,7 +1,8 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { FadeInImage } from '.'
 import { InfoPokemon } from '../interface/interfacePokemon'
+import appTheme from '../theme/appTheme'
+import Gap from './Gap'
 
 
 interface Props {
@@ -11,69 +12,90 @@ interface Props {
 
 const PokemonDetails = ({ pokemon, color }: Props) => {
 
-    console.log(pokemon)
-
     return (
-        <ScrollView
+        <View
             style={{
-                ...StyleSheet.absoluteFillObject,
-
+                ...styles.container,
+                ...appTheme.shadow,
+                backgroundColor: color,
             }}
-            showsVerticalScrollIndicator={false}
         >
-            <View style={{ ...styles.container, marginTop: 380 }}>
-                {/* Type */}
-                <View
-                    style={{
-                        backgroundColor: color,
-                        padding: 10,
-                        borderRadius: 10,
-                        elevation: 3,
-                    }}
-                >
-                    <Text style={styles.title}>
-                        Types:
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{ marginTop: 10 }}>
+                    <Text
+                        style={styles.title}
+                    >
+                        Abilities
                     </Text>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={styles.wrapper}>
                         {
-                            pokemon.types.map(({ type }) => (
+                            pokemon.abilities.map(({ability}) => (
                                 <Text
-                                    key={type.name}
-                                    style={{
-                                        ...styles.regularText,
-                                        marginRight: 10
-                                    }}
-                                >
-                                    {type.name}
-                                </Text>
-                            ))
-                        }
-                    </View>
-
-                    <View style={{ height: 20 }}/>
-                    {/* Habilidades */}
-
-                    <Text style={styles.title}>
-                        Abilities:
-                    </Text>
-                    <View style={{ flexDirection: 'row' }}>
-                        {
-                            pokemon.abilities.map(({ ability }) => (
-                                <Text
-                                    key={ability.name}
-                                    style={{
-                                        ...styles.regularText,
-                                        marginRight: 10
-                                    }}
+                                    style={styles.wrapperText}
                                 >
                                     {ability.name}
                                 </Text>
                             ))
                         }
                     </View>
+                    <Gap height={20}/>
+                    <Text
+                        style={styles.title}
+                    >
+                        Moves
+                    </Text>
+                    <ScrollView 
+                        horizontal 
+                        showsHorizontalScrollIndicator={false}  
+                    >
+                        {
+                            pokemon.moves.map(({move}) => (
+                                <Text
+                                    style={styles.wrapperText}
+                                >
+                                    {move.name}
+                                </Text>
+                            ))
+                        }
+                    </ScrollView>
+                    <Gap height={20}/>
+                    <Text
+                        style={styles.title}
+                    >
+                        Forms
+                    </Text>
+                    <View style={styles.wrapper}>
+                        {
+                            pokemon.forms.map(({name}) => (
+                                <Text
+                                    style={styles.wrapperText}
+                                >
+                                    {name}
+                                </Text>
+                            ))
+                        }
+                    </View>
+                    <Gap height={20}/>
+                    <Text
+                        style={styles.title}
+                    >
+                        Types
+                    </Text>
+                    <View style={styles.wrapper}>
+                        {
+                            pokemon.types.map(({type}) => (
+                                <Text
+                                    style={styles.wrapperText}
+                                >
+                                    {type.name}
+                                </Text>
+                            ))
+                        }
+                    </View>
+                    <Gap height={50}/>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     )
 }
 
@@ -81,13 +103,17 @@ export default PokemonDetails
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 20,
-        
+        flex: 1,
+        borderTopRightRadius: 50,
+        borderTopLeftRadius: 50,
+        marginTop: 10,
+        padding: 20,
     },
     title: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
-        color: '#ffffff'
+        textTransform: 'uppercase',
+        color: '#FFF',
     },
     regularText: {
         fontSize: 20,
@@ -100,5 +126,19 @@ const styles = StyleSheet.create({
     pokeSprites: {
         height: 120,
         width: 100,
+    },
+    wrapper: {
+        flexDirection: 'row',
+    },
+    wrapperText: {
+        backgroundColor: '#00000040',
+        paddingVertical: 8,
+        paddingHorizontal: 11,
+        borderRadius: 10,
+        marginRight: 5,
+        marginTop: 3,
+        color: '#FFF',
+        fontSize: 20,
+        textTransform: 'capitalize'
     }
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import {ActivityIndicator, FlatList, Image, View} from 'react-native';
+import {ActivityIndicator, FlatList, Image, StatusBar, View} from 'react-native';
 import {PokemonCard} from '../../components';
 import {usePokemonPagination} from '../../hooks';
 import appTheme from '../../theme/appTheme';
@@ -29,6 +29,10 @@ const HomeScreen = () => {
     }
     return (
         <>
+            <StatusBar 
+                backgroundColor='white'
+                barStyle='dark-content'
+            />
             <Image 
                 source={ require('../../assets/pokebola.png')}
                 style={{ ...appTheme.pokebolaBG}}
